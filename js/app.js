@@ -2,7 +2,8 @@
 var question;
 var userAnswer;
 var response;
-/*
+var correctGuesses = 0;
+
 // question #1
 question = 'Am I a native Seattlite?';
 userAnswer = prompt(question).toLowerCase();
@@ -12,9 +13,11 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 'n') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else if (userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
@@ -30,9 +33,11 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 'n') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else if (userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
@@ -48,9 +53,11 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 'y') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else if (userAnswer === 'yes') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
@@ -66,9 +73,11 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 'n') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else if (userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
@@ -84,9 +93,11 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 'n') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else if (userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
@@ -102,12 +113,13 @@ console.log('...User answer: ', userAnswer);
 if (userAnswer === 4) {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   response = 'Sorry, that is incorrect.';
   console.log('...Answer status: Incorrect!');
 }
 alert(response);
-*/
+
 //question #7
 question = 'Can you guess a state that I\'ve lived in?';
 console.log('Question: ', question);
@@ -132,9 +144,12 @@ while ((numberOfGuesses < maxGuesses) && userIsGuessing) {
 }
 
 if (answerIsCorrect) {
-  alert('Nice guess! You\'re right!');
+  alert('Nice guess! You\'re right!]\nI have lived in the following states: ' + states);
   console.log('...Answer status: Correct');
+  correctGuesses++;
 } else {
   alert('Better luck next time!');
   console.log('...Answer status: Incorrect');
 }
+
+alert('You got ' + correctGuesses + ' answers correct!');
