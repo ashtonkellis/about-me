@@ -1,20 +1,32 @@
 body {
   background-color: white;
   color: darkblue;
+  font-family: sans-serif;
 }
 
 h1 {
   font-size: 2.5em;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  margin-bottom: 20px;
+  /* margin-top: 30px; */
   text-align: center;
+  display: inline-block
 }
 
 h2 {
   font-size: 1.5em;
-  text-align: left;
+  margin-bottom: 10px;
+  
 }
 
+h3 {
+  font-size: 1.25em;
+  text-decoration: underline;
+  background-color: lavender;
+}
+.container {
+  width: 90%;
+  margin: auto;
+}
 p {
   padding: 10px;
 }
@@ -23,4 +35,43 @@ img {
   border-radius: 50%;
   height: 100px;
   float: left;
+  margin: 10px;
 }
+
+header img {
+  float: none;
+  display: inline-block;
+}
+
+ul li {
+  padding: 5px 15px;
+  list-style: circle inside;
+}
+
+ol li {
+  padding: 5px 15px;
+  list-style: decimal inside;
+}
+
+heading,
+section {
+  border: 5px solid;
+  padding: 10px;
+}
+
+.favorite-celebrities {
+  padding-bottom: 150px;
+}
+
+.column {
+  width: 50%;
+}
+
+.bjj-athletes {
+  float: left;
+}
+
+.nerds {
+  float: right;
+}
+
