@@ -3,6 +3,7 @@ var question;
 var userAnswer;
 var response;
 var correctGuesses = 0;
+var userName = prompt('Hello! What is your name?');
 
 // question #1
 question = 'Am I a native Seattlite?';
@@ -10,11 +11,7 @@ userAnswer = prompt(question).toLowerCase();
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
 
-if (userAnswer === 'n') {
-  response = 'That is correct!';
-  console.log('...Answer status: Correct');
-  correctGuesses++;
-} else if (userAnswer === 'no') {
+if (userAnswer === 'n' || userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
   correctGuesses++;
@@ -30,11 +27,7 @@ userAnswer = prompt(question).toLowerCase();
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
 
-if (userAnswer === 'n') {
-  response = 'That is correct!';
-  console.log('...Answer status: Correct');
-  correctGuesses++;
-} else if (userAnswer === 'no') {
+if (userAnswer === 'n' || userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
   correctGuesses++;
@@ -50,11 +43,7 @@ userAnswer = prompt(question).toLowerCase();
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
 
-if (userAnswer === 'y') {
-  response = 'That is correct!';
-  console.log('...Answer status: Correct');
-  correctGuesses++;
-} else if (userAnswer === 'yes') {
+if (userAnswer === 'y' || userAnswer === 'yes') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
   correctGuesses++;
@@ -70,11 +59,7 @@ userAnswer = prompt(question).toLowerCase();
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
 
-if (userAnswer === 'n') {
-  response = 'That is correct!';
-  console.log('...Answer status: Correct');
-  correctGuesses++;
-} else if (userAnswer === 'no') {
+if (userAnswer === 'n' || userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
   correctGuesses++;
@@ -90,11 +75,7 @@ userAnswer = prompt(question).toLowerCase();
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
 
-if (userAnswer === 'n') {
-  response = 'That is correct!';
-  console.log('...Answer status: Correct');
-  correctGuesses++;
-} else if (userAnswer === 'no') {
+if (userAnswer === 'n' || userAnswer === 'no') {
   response = 'That is correct!';
   console.log('...Answer status: Correct');
   correctGuesses++;
@@ -105,7 +86,7 @@ if (userAnswer === 'n') {
 alert(response);
 
 //question #6
-question = 'How many pairs of pants do I own?';
+question = 'How many pairs of pants do I own? Please enter a number.';
 userAnswer = parseInt(prompt(question));
 console.log('Question: ', question);
 console.log('...User answer: ', userAnswer);
@@ -124,7 +105,7 @@ alert(response);
 question = 'Can you guess a state that I\'ve lived in?';
 console.log('Question: ', question);
 
-var states = ['california', 'maine', 'washington'];
+var states = ['California', 'Maine', 'Washington'];
 var answerIsCorrect = false;
 var userIsGuessing = true;
 var numberOfGuesses = 0;
@@ -136,10 +117,13 @@ while ((numberOfGuesses < maxGuesses) && userIsGuessing) {
   console.log('...User answer #', numberOfGuesses, ': ', userAnswer);
 
   for (var i = 0; i < states.length && !answerIsCorrect; i++) {
-    if (userAnswer === states[i]) {
+    if (userAnswer === states[i].toLowerCase()) {
       userIsGuessing = false;
       answerIsCorrect = true;
     }
+  }
+  if (!answerIsCorrect) {
+    alert('Sorry, that\'s incorrect. You have ' + (maxGuesses - numberOfGuesses) + ' guesses remaining.');
   }
 }
 
@@ -152,4 +136,4 @@ if (answerIsCorrect) {
   console.log('...Answer status: Incorrect');
 }
 
-alert('You got ' + correctGuesses + ' answers correct!');
+alert('You got ' + correctGuesses + ' answers correct! That\'s the end of the guessing game! See you next time ' + userName + '!');
