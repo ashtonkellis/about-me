@@ -1,102 +1,56 @@
 'use strict';
 
+// Creates an array of questions to ask the user
+var questionArray = [
+  'Am I a native Seattlite?',
+  'Have I successfully ridden my bicycle all the way from San Fransisco to Virginia?',
+  'Do I have a wife?',
+  'Do I have any pets?',
+  'Do I like sports?'];
+
+// Creates an array of answers for each of the questions
+// Multidimensional to allow for whole word or first letter
+var answerArray = [['n','n','y','n','n'],['no','no','yes','no','no']];
+
+// Creates an array of responses to correct and incorrect answers
+var responseArray = ['That is correct!','Sorry, that is incorrect.'];
+
+// Declares variables for use in functions
 var question;
 var userAnswer;
 var response;
 var correctGuesses = 0;
 var userName = prompt('Hello! What is your name?');
 
-// question #1
-function askQuestion1() {
-  question = 'Am I a native Seattlite?';
+// Loops through questions #1-5
+for (var index = 0; index < 5; index++) {
+  askQuestion(index);
+}
+
+askQuestion6(); // Asks question #6
+askQuestion7(); // Asks question #7
+
+// Notifies the user of their total score at end of game
+alert('You got ' + correctGuesses + ' answers correct! That\'s the end of the guessing game! See you next time ' + userName + '!');
+
+// Function to enable for-loop to ask questions #1-5 and utilize user response
+function askQuestion(i) {
+  question = questionArray[i];
   userAnswer = prompt(question).toLowerCase();
   console.log('Question: ', question);
   console.log('...User answer: ', userAnswer);
 
-  if (userAnswer === 'n' || userAnswer === 'no') {
-    response = 'That is correct!';
+  if (userAnswer === answerArray[0][i] || userAnswer === answerArray[1][i]) {
+    alert(responseArray[0]);
     console.log('...Answer status: Correct');
     correctGuesses++;
   } else {
-    response = 'Sorry, that is incorrect.';
+    alert(responseArray[1]);
     console.log('...Answer status: Incorrect!');
   }
-  alert(response);
 }
 
-// question #2
-function askQuestion2() {
-  question = 'Have I successfully ridden my bicycle all the way from San Fransisco to Virginia?';
-  userAnswer = prompt(question).toLowerCase();
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
-
-  if (userAnswer === 'n' || userAnswer === 'no') {
-    response = 'That is correct!';
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    response = 'Sorry, that is incorrect.';
-    console.log('...Answer status: Incorrect!');
-  }
-  alert(response);
-}
-
-// question #3
-function askQuestion3() {
-  question = 'Do I have a wife?';
-  userAnswer = prompt(question).toLowerCase();
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
-
-  if (userAnswer === 'y' || userAnswer === 'yes') {
-    response = 'That is correct!';
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    response = 'Sorry, that is incorrect.';
-    console.log('...Answer status: Incorrect!');
-  }
-  alert(response);
-}
-
-// question #4
-function askQuestion4() {
-  question = 'Do I have any pets?';
-  userAnswer = prompt(question).toLowerCase();
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
-
-  if (userAnswer === 'n' || userAnswer === 'no') {
-    response = 'That is correct!';
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    response = 'Sorry, that is incorrect.';
-    console.log('...Answer status: Incorrect!');
-  }
-  alert(response);
-}
-
-// question #5
-function askQuestion5() {
-  question = 'Do I like sports?';
-  userAnswer = prompt(question).toLowerCase();
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
-
-  if (userAnswer === 'n' || userAnswer === 'no') {
-    response = 'That is correct!';
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    response = 'Sorry, that is incorrect.';
-    console.log('...Answer status: Incorrect!');
-  }
-  alert(response);
-}
-
-//question #6
+// Function to ask question #6
 function askQuestion6() {
   question = 'How many pairs of pants do I own? Please enter a number.';
   userAnswer = parseInt(prompt(question));
@@ -114,7 +68,7 @@ function askQuestion6() {
   alert(response);
 }
 
-//question #7
+// Function to ask question #7
 function askQuestion7() {
   question = 'Can you guess a state that I\'ve lived in?';
   console.log('Question: ', question);
@@ -150,13 +104,3 @@ function askQuestion7() {
     console.log('...Answer status: Incorrect');
   }
 }
-
-askQuestion1();
-askQuestion2();
-askQuestion3();
-askQuestion4();
-askQuestion5();
-askQuestion6();
-askQuestion7();
-
-alert('You got ' + correctGuesses + ' answers correct! That\'s the end of the guessing game! See you next time ' + userName + '!');
