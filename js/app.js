@@ -9,98 +9,109 @@ var questionArray = [
   'Do I like sports?'];
 
 // Creates an array of answers for each of the questions
-// Multidimensional to allow for whole word or first letter
 var answerArray = [['n','n','y','n','n'],['no','no','yes','no','no']];
 
 // Creates an array of responses to correct and incorrect answers
 var responseArray = ['That is correct!','Sorry, that is incorrect.'];
 
 // Declares variables for use in functions
-var question;
-var userAnswer;
-var response;
 var correctGuesses = 0;
-var userName = prompt('Hello! What is your name?');
+var userName = 'Anonymous Person';
 
-// Loops through questions #1-5
-for (var index = 0; index < 5; index++) {
-  askQuestion(index);
+function greetUser() {
+  userName = prompt('Hello! What is your name?');
 }
-
-askQuestion6(); // Asks question #6
-askQuestion7(); // Asks question #7
-
-// Notifies the user of their total score at end of game
-alert('You got ' + correctGuesses + ' answers correct! That\'s the end of the guessing game! See you next time ' + userName + '!');
 
 // Function to enable for-loop to ask questions #1-5 and utilize user response
 function askQuestion(i) {
-  question = questionArray[i];
-  userAnswer = prompt(question).toLowerCase();
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
+  var question = questionArray[i];
+  var userAnswer = prompt(question).toLowerCase();
+  console.log('Question # ' + (i + 1) + ': ', question);
 
   if (userAnswer === answerArray[0][i] || userAnswer === answerArray[1][i]) {
     alert(responseArray[0]);
-    console.log('...Answer status: Correct');
+    console.log('...User answer (Correct): ', userAnswer);
     correctGuesses++;
   } else {
     alert(responseArray[1]);
-    console.log('...Answer status: Incorrect!');
+    console.log('...User answer (Incorrect): ', userAnswer);
+  }
+}
+
+// Loops through questions #1-5
+function askQuestions1thru5 () {
+  for (var i = 0; i < 5; i++) {
+    askQuestion(i);
   }
 }
 
 // Function to ask question #6
 function askQuestion6() {
-  question = 'How many pairs of pants do I own? Please enter a number.';
-  userAnswer = parseInt(prompt(question));
-  console.log('Question: ', question);
-  console.log('...User answer: ', userAnswer);
+  var userIsGuessing = true;
+  var maxGuesses = 4;
+  var numberOfGuesses = 0;
+  var question = 'How many pairs of pants do I own? Please enter a number. You have ' + (maxGuesses - numberOfGuesses) + ' guesses remaining.';
+  console.log('Question # 6: ', question);
 
-  if (userAnswer === 4) {
-    response = 'That is correct!';
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    response = 'Sorry, that is incorrect.';
-    console.log('...Answer status: Incorrect!');
+  while ((numberOfGuesses < maxGuesses) && userIsGuessing) {
+    var userAnswer = parseInt(prompt(question));
+    numberOfGuesses++;
+    question = 'How many pairs of pants do I own? Please enter a number. You have ' + (maxGuesses - numberOfGuesses) + ' guesses remaining.';
+
+    if (userAnswer === 4) {
+      alert('That is correct!');
+      console.log('...User answer #', numberOfGuesses, '(Correct!): ', userAnswer);
+      correctGuesses++;
+      userIsGuessing = false;
+    } else if (userAnswer > 4) {
+      alert('Sorry, that TOO HIGH!.');
+      console.log('...User answer #', numberOfGuesses, '(Too high): ', userAnswer);
+    } else if (userAnswer < 4) {
+      alert('Sorry, that TOO LOW!.');
+      console.log('...User answer #', numberOfGuesses, '(Too low): ', userAnswer);
+    } else {
+      alert('Please enter a number.');
+      console.log('...User answer #', numberOfGuesses, '(Incorrect!): ', userAnswer);
+    }
   }
-  alert(response);
 }
-
 // Function to ask question #7
 function askQuestion7() {
-  question = 'Can you guess a state that I\'ve lived in?';
-  console.log('Question: ', question);
-
+  var question = 'Can you guess a state that I\'ve lived in?';
   var states = ['California', 'Maine', 'Washington'];
   var answerIsCorrect = false;
-  var userIsGuessing = true;
   var numberOfGuesses = 0;
   var maxGuesses = 6;
 
-  while ((numberOfGuesses < maxGuesses) && userIsGuessing) {
-    numberOfGuesses++;
-    userAnswer = prompt(question).toLowerCase();
-    console.log('...User answer #', numberOfGuesses, ': ', userAnswer);
+  console.log('Question # 7: ', question);
 
-    for (var i = 0; i < states.length && !answerIsCorrect; i++) {
-      if (userAnswer === states[i].toLowerCase()) {
-        userIsGuessing = false;
-        answerIsCorrect = true;
-      }
-    }
-    if (!answerIsCorrect) {
+  while ((numberOfGuesses < maxGuesses) && !answerIsCorrect) {
+    var userAnswer = prompt('Can you guess a state that I\'ve lived in? You have ' + (maxGuesses - numberOfGuesses) + ' guesses remaining');
+    userAnswer = userAnswer.slice(0,1).toUpperCase() + userAnswer.slice(1).toLowerCase();
+    numberOfGuesses++;
+
+    answerIsCorrect = states.includes(userAnswer);
+    if (answerIsCorrect) {
+      alert('Nice guess! You\'re right!\nI have lived in the following states:\n' + states);
+      console.log('...User answer #' + numberOfGuesses + ' (Correct!): ' + userAnswer);
+      correctGuesses++;
+    } else {
       alert('Sorry, that\'s incorrect. You have ' + (maxGuesses - numberOfGuesses) + ' guesses remaining.');
+      console.log('...User answer #' + numberOfGuesses + ' (Incorrect!): ' + userAnswer);
     }
   }
-
-  if (answerIsCorrect) {
-    alert('Nice guess! You\'re right!\nI have lived in the following states: ' + states);
-    console.log('...Answer status: Correct');
-    correctGuesses++;
-  } else {
-    alert('Better luck next time!');
-    console.log('...Answer status: Incorrect');
+  if (!answerIsCorrect) {
+    alert('Better luck next time!\nI have lived in the following states:\n' + states);
   }
 }
+
+// Function to bid farewell to a user after completing the guessing game
+function adiosUser () {
+  alert('You got ' + correctGuesses + ' answers correct! That\'s the end of the guessing game! See you next time ' + userName + '!');
+}
+
+greetUser();
+askQuestions1thru5();
+askQuestion6();
+askQuestion7();
+adiosUser();

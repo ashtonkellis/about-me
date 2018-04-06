@@ -1,12 +1,3 @@
- Assignment Overview: Lab 3
 
-### User Stories (Stretch goals... not required!)
 
-- As a developer, I want to make my code more DRY by putting all of the questions, answers, and responses to the first five yes/no questions in my guessing game into arrays (or even one huge multidimensional array), and modifying the game logic such that a 'for' loop will control the flow from question to question.
-
-### Submitting Your Assignment
-
-- Submit the link to your GitHub repo for this project.
-- Add a comment to this Canvas submission with answers to the following questions.
-  - How did this go, overall?
-  - What observations or questions do you have about what you've learned so far?
+As a developer, I want to add a sixth question to my guessing game that takes numeric input by prompting a user to guess a number (for instance, "What is my favorite number?" or "How many Pokémon did I catch this week?"), and indicates to the user whether the guess is 'too high' or 'too low', and gives the user exactly four opportunities to get the correct answer, so that my fancy programming skills are showcased.
